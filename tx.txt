@@ -1,0 +1,6 @@
+org.springframework.transaction.UnexpectedRollbackException: Transaction rolled back because it has been marked as rollback-only
+原因：
+    1. 方法A有事务，调用方法B1（无事务），方法B1调用方法B2（有事务）
+    2. 方法B2抛出异常，因为其上有事务，所以Spring标记为rolled back
+    3. 方法B1捕获了异常且不抛出，所以方法A感知不到异常，于是方法A正常执行
+    4. 方法A执行完成后，Spring进行事务提交，但是由于之前又标识为rolled back，于是报错如上
