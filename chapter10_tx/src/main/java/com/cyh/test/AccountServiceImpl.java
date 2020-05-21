@@ -10,17 +10,11 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
-public class UserServiceImpl implements UserService {
+public class AccountServiceImpl implements AccountService {
 
     private JdbcTemplate jdbcTemplate;
-    
-    private AccountService accountService;
 
     private PlatformTransactionManager transactionManager;
-    
-    public void setAccountService(AccountService accountService) {
-		this.accountService = accountService;
-	}
 
     public void setTransactionManager(PlatformTransactionManager transactionManager) {
 		this.transactionManager = transactionManager;
@@ -97,7 +91,6 @@ public class UserServiceImpl implements UserService {
     	user.setAge(1);
 		doSave2(user);
     	user.setAge(2);
-    	//在本类开启REQUIRES_NEW不生效
 		save2(user);
     	user.setAge(3);
 		doSave2(user);
@@ -110,17 +103,11 @@ public class UserServiceImpl implements UserService {
 		doSave2(user);		
 	}
 
-    @Transactional(propagation=Propagation.REQUIRED,rollbackFor = RuntimeException.class)	
+
 	@Override
 	public void save3(User user) {
-    	user.setAge(1);
-		doSave2(user);
-    	user.setAge(2);
-    	//在新类开启REQUIRES_NEW生效
-		accountService.save2(user);
-    	user.setAge(3);
-		doSave2(user);
-        int x = 1 / 0;
+		// TODO Auto-generated method stub
+		
 	}
 
 

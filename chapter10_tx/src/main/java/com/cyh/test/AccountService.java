@@ -1,6 +1,6 @@
 package com.cyh.test;
 
-public interface UserService {
+public interface AccountService {
 
     /**
      * 有事务
