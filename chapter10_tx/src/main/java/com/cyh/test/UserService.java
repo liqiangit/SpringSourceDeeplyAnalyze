@@ -13,5 +13,9 @@ public interface UserService {
      * @param user
      */
     void saveWithoutTransaction(User user);
-
+    /**
+     * 有事务
+     * @param user
+     */
+    void saveWithPlatformTransactionManager(User user);
 }

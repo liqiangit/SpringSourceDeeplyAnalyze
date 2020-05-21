@@ -23,6 +23,12 @@ public class UserServiceTransactionTest {
             log.warn(e.getMessage(), e);
         }
         try {
+            User user = new User(null, "saveWithPlatformTransactionManager()", 28, "Male");
+            context.getBean(UserService.class).saveWithPlatformTransactionManager(user);
+        } catch (Exception e) {
+            log.warn(e.getMessage(), e);
+        }
+        try {
             User user = new User(null, "UserServiceWithoutTransaction.save()", 29, "Male");
             context.getBean(UserServiceWithoutTransaction.class).save(user);
         } catch (Exception e) {
