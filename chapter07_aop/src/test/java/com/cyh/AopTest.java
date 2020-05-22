@@ -7,6 +7,7 @@ import com.cyh2.NonAopBeanTest;
 public class AopTest {
 
     public static void main(String[] args) {
+    	//org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("aop-context.xml");
         context.getBean(TestBean.class).test();
         System.err.println("==========================================================================");
