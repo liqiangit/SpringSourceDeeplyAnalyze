@@ -1,11 +1,14 @@
 package com.cyh.test;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class UserServiceTransactionTest2 {
+	static Logger log=LoggerFactory.getLogger(UserServiceTransactionTest2.class);
 
 	public static void main(String[] args) throws InterruptedException {
 //		Thread.sleep(30 * 1000);

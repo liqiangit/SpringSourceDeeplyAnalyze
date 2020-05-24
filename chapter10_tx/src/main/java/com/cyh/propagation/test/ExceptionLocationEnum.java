@@ -13,4 +13,8 @@ public enum ExceptionLocationEnum {
 
     private String desc;
 
+	private ExceptionLocationEnum(String desc) {
+		this.desc = desc;
+	}
+
 }

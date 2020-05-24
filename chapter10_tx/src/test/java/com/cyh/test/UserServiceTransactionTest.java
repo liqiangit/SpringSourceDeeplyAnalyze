@@ -1,12 +1,14 @@
 package com.cyh.test;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class UserServiceTransactionTest {
-
+	static Logger log=LoggerFactory.getLogger(UserServiceTransactionTest.class);
 
     public static void main(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("userService.xml");
