@@ -16,6 +16,12 @@ public class UserServiceImpl implements UserService {
 
 	private AccountService accountService;
 
+	private SystemService systemService;
+
+	public void setSystemService(SystemService systemService) {
+		this.systemService = systemService;
+	}
+
 	private PlatformTransactionManager transactionManager;
 
 	public void setAccountService(AccountService accountService) {
@@ -101,7 +107,7 @@ public class UserServiceImpl implements UserService {
 		save2(user);
 		user.setAge(3);
 		doSaveUser(user);
-		int x = 1 / 0;
+		// int x = 1 / 0;
 	}
 
 	@Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = RuntimeException.class)
@@ -120,7 +126,7 @@ public class UserServiceImpl implements UserService {
 		accountService.save2(user);
 		user.setAge(3);
 		doSaveUser(user);
-		int x = 1 / 0;
+		// int x = 1 / 0;
 	}
 
 	@Override
@@ -157,7 +163,35 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = RuntimeException.class)
 	@Override
 	public void save6(User user) {
+		user.setAge(1);
+		doSaveUser(user);
+		user.setAge(2);
+		accountService.save6(user);
+		user.setAge(3);
+		doSaveUser(user);
+		user.setAge(4);
+		systemService.save6(user);
+//		 int x = 1 / 0;
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = RuntimeException.class)
+	@Override
+	public void save7(User user) {
+		user.setAge(1);
+		doSaveUser(user);
+		user.setAge(2);
+		save8(user);
+		user.setAge(3);
+		doSaveUser(user);
+		// int x = 1 / 0;
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = RuntimeException.class)
+	@Override
+	public void save8(User user) {
+		doSaveUser(user);
 	}
 }

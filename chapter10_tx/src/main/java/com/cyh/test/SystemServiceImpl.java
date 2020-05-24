@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
-public class AccountServiceImpl implements AccountService {
+public class SystemServiceImpl implements SystemService {
 
 	private JdbcTemplate jdbcTemplate;
 
@@ -24,7 +24,6 @@ public class AccountServiceImpl implements AccountService {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 
-	@Transactional(rollbackFor = RuntimeException.class)
 	@Override
 	public void saveWithTransaction(User user) {
 		doSave(user);
@@ -68,7 +67,6 @@ public class AccountServiceImpl implements AccountService {
 	public void save1(User user) {
 	}
 
-	@Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = RuntimeException.class)
 	@Override
 	public void save2(User user) {
 		doSaveUser(user);
@@ -108,7 +106,6 @@ public class AccountServiceImpl implements AccountService {
 		}
 	}
 
-//	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = RuntimeException.class)
 	@Override
 	public void save6(User user) {
 		doSaveUser(user);

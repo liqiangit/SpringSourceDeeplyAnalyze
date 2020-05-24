@@ -1,6 +1,6 @@
 package com.cyh.test;
 
-public interface UserService {
+public interface SystemService {
 
     /**
      * 有事务
@@ -26,6 +26,4 @@ public interface UserService {
     void save4(User user);
     void save5(User user);
     void save6(User user);
-    void save7(User user);
-    void save8(User user);
 }

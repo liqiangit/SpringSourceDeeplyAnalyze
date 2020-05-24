@@ -51,12 +51,18 @@
 	</bean>
 
     <bean id="userService" class="com.cyh.test.UserServiceImpl">
+        <property name="systemService" ref="systemService"/>
         <property name="accountService" ref="accountService"/>
         <property name="dataSource" ref="dataSource"/>
         <property name="transactionManager" ref="transactionManager"/>
     </bean>
 
     <bean id="accountService" class="com.cyh.test.AccountServiceImpl">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="transactionManager" ref="transactionManager"/>
+    </bean>
+    
+        <bean id="systemService" class="com.cyh.test.SystemServiceImpl">
         <property name="dataSource" ref="dataSource"/>
         <property name="transactionManager" ref="transactionManager"/>
     </bean>
